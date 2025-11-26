@@ -2,20 +2,20 @@ package com.projetoPablo;
 
 public class Medico extends Funcionario{
     // ATRIBUTOS
-    private String areaTrabalho; // VERDE, AMARELO, VERMELHO
+    private Prioridade areaTrabalho; // VERDE, AMARELO, VERMELHO
 
     // CONSTRUTOR
-    public Medico(String nome, String cpf, String dataNascimento, String matricula, String senha, UPA upaAlocado, String areaTrabalho) {
+    public Medico(String nome, String cpf, String dataNascimento, String matricula, String senha, UPA upaAlocado, Prioridade areaTrabalho) {
         super(nome, cpf, dataNascimento, matricula, senha, upaAlocado);
         this.areaTrabalho = areaTrabalho;
     }
 
     // GETTERS E SETTERS
-    public String getAreaTrabalho() {
+    public Prioridade getAreaTrabalho() {
         return areaTrabalho;
     }
 
-    public void setAreaTrabalho(String areaTrabalho) {
+    public void setAreaTrabalho(Prioridade areaTrabalho) {
         this.areaTrabalho = areaTrabalho;
     }
 

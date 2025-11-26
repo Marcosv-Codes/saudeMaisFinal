@@ -51,6 +51,17 @@ public abstract class Funcionario extends Pessoa {
         if (senha == null || this.senha == null) {
             return false;
         }
-        return this.senha.equals(senha);
+        // COMPARA A MATRÍCULA E SENHA INSERIDAS:
+        boolean matriculalCorreta = this.matricula.equals(matricula);
+        boolean senhaCorreta = this.senha.equals(senha);
+        boolean autenticadoComSucesso = matriculalCorreta && senhaCorreta;
+
+        if(autenticadoComSucesso) {
+            System.out.println("Funcionário autenticado com sucesso!");
+        } else {
+            System.out.println("Autentição falhou! Matrícula ou senha incorretos!");
+        }
+
+        return autenticadoComSucesso;
     }
 }

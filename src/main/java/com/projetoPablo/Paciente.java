@@ -4,7 +4,7 @@ public class Paciente extends Pessoa{
     // ATRIBUTOS
     private String email;
     private String senha;
-    private String prioridade; // VERDE, AMARELA, VERMELHA
+    private Prioridade prioridade; // VERDE, AMARELA, VERMELHA
     private String chegadaFilaTimestamp;
 
     // GETTERS E SETTERS
@@ -20,10 +20,11 @@ public class Paciente extends Pessoa{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public String getPrioridade() {
+    public Prioridade getPrioridade() {
         return prioridade;
     }
-    public void setPrioridade(String prioridade) {
+
+    public void setPrioridade(Prioridade prioridade) {
         this.prioridade = prioridade;
     }
     public String getChegadaFilaTimestamp() {
@@ -34,7 +35,7 @@ public class Paciente extends Pessoa{
     }
 
     // CONSTRUTOR
-    public Paciente(String nome, String cpf, String dataNascimento, String email, String senha, String prioridade, String chegadaFilaTimestamp) {
+    public Paciente(String nome, String cpf, String dataNascimento, String email, String senha, Prioridade prioridade, String chegadaFilaTimestamp) {
         super(nome, cpf, dataNascimento);
         this.email = email;
         this.senha = senha;
@@ -59,6 +60,7 @@ public class Paciente extends Pessoa{
         if(email == null || this.email == null || senha == null || this.senha == null){
             return false;
         }
+
         // COMPARA O E-MAIL E SENHA INSERIDOS:
         boolean emailCorreto = this.email.equals(email);
         boolean senhaCorreta = this.senha.equals(senha);
