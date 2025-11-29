@@ -35,12 +35,12 @@ public class Paciente extends Pessoa{
     }
 
     // CONSTRUTOR
-    public Paciente(String nome, String cpf, String dataNascimento, String email, String senha, Prioridade prioridade, String chegadaFilaTimestamp) {
+    public Paciente(String nome, String cpf, String dataNascimento, String email, String senha, String chegadaFilaTimestamp) {
         super(nome, cpf, dataNascimento);
         this.email = email;
         this.senha = senha;
-        this.prioridade = prioridade;
         this.chegadaFilaTimestamp = chegadaFilaTimestamp;
+        this.prioridade = null; // inicia sem prioridade, definida na triagem
     }
 
     // TO-STRING
@@ -67,7 +67,8 @@ public class Paciente extends Pessoa{
         boolean logouComSucesso = emailCorreto && senhaCorreta;
 
         if(logouComSucesso) {
-            System.out.println("Logado com sucesso!");
+            System.out.println("Verificando email e senha...");
+            System.out.println(getNome() + " Logado com sucesso!");
         } else {
             System.out.println("Login falhou! E-mail ou senha incorretos!");
         }

@@ -20,6 +20,7 @@ public class Gestor extends Funcionario{
     }
 
     public String gerarRelatorioSimples() {
+
         return null; // SEM LOGICA
     }
 }

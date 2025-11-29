@@ -75,7 +75,29 @@ public class UPA {
 
     // MÉTODOS
     public void adicionarPacienteFila(Paciente paciente) {
-        // SEM LOGICA
+        if (paciente == null) {
+            System.out.println("⚠️ Paciente inválido.");
+            return;
+        }
+
+        if (paciente.getPrioridade() == null) {
+            System.out.println("⚠️ O paciente " + paciente.getNome() + " ainda não passou pela triagem!");
+            return;
+        }
+
+        switch (paciente.getPrioridade()) {
+            case VERDE:
+                filaVerde.add(paciente);
+                break;
+            case AMARELA:
+                filaAmarela.add(paciente);
+                break;
+            case VERMELHA:
+                filaVermelha.add(paciente);
+                break;
+        }
+
+        //System.out.println("✅ Paciente " + paciente.getNome() + " entrou na fila " + paciente.getPrioridade() + " da UPA " + this.nome);
     }
 
     public Paciente chamarProximo(Prioridade prioridade) {
