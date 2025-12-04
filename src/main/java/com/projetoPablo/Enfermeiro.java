@@ -56,6 +56,8 @@ public class Enfermeiro extends Funcionario{
             System.out.println("⚠️ O(a) paciente não estava na fila, verifique o fluxo.");
         }
 
+        getUpaAlocado().registrarAtendimento(paciente.getPrioridade());
+
         System.out.println("📃 Status: Alta registrada pelo(a) enfermeiro(a) " + getNome() + " ✅");
         System.out.println("======================================================================");
     }

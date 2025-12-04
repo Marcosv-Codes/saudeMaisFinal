@@ -75,9 +75,10 @@ public class Paciente extends Pessoa{
 
         return logouComSucesso;
     }
-
+    /*
     public double verTempoEspera(){
         double tempoEspera = 0.0;
         return tempoEspera; // FALTA A LOGICA
     }
+     */
 }

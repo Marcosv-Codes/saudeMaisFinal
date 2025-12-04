@@ -11,6 +11,11 @@ public class UPA {
     private ArrayList<Paciente> filaAmarela;
     private ArrayList<Paciente> filaVermelha;
 
+    // CONTADORES
+    private int atendidosVerde = 0;
+    private int atendidosAmarela = 0;
+    private int atendidosVermelha = 0;
+
     // GETTERS E SETTERS
     public String getNome() {
         return nome;
@@ -50,6 +55,18 @@ public class UPA {
 
     public void setFilaVermelha(ArrayList<Paciente> filaVermelha) {
         this.filaVermelha = filaVermelha;
+    }
+
+    public int getAtendidosVerde() {
+        return atendidosVerde;
+    }
+
+    public int getAtendidosAmarela() {
+        return atendidosAmarela;
+    }
+
+    public int getAtendidosVermelha() {
+        return atendidosVermelha;
     }
 
     // CONSTRUTOR
@@ -104,6 +121,46 @@ public class UPA {
         Paciente proximo = null;
         String filaNome = "";
 
+        // VERIFICANDO A PRIORIDADE DA FILA
+
+        if (!filaVermelha.isEmpty()) {
+            proximo = filaVermelha.get(0);
+            filaNome = "VERMELHA 🔴";
+            filaVermelha.remove(0);
+            registrarAtendimento(Prioridade.VERMELHA);
+        }
+        else if (!filaAmarela.isEmpty()) {
+            proximo = filaAmarela.get(0);
+            filaNome = "AMARELA 🟡";
+            filaAmarela.remove(0);
+            registrarAtendimento(Prioridade.AMARELA);
+        }
+        else if (!filaVerde.isEmpty()) {
+            proximo = filaVerde.get(0);
+            filaNome = "VERDE 🟢";
+            filaVerde.remove(0);
+            registrarAtendimento(Prioridade.VERDE);
+        }
+        else {
+            System.out.println("⚠️ Nenhum paciente na fila no momento.");
+            return null;
+        }
+
+        // 2. PRINTA AS INFORMAÇÕES DO PACIENTE CHAMADO
+        System.out.println("\n==============================================");
+        System.out.println("🚑 Próximo paciente chamado!");
+        System.out.println("🏥 UPA: " + getNome());
+        System.out.println("👤 Nome: " + proximo.getNome());
+        System.out.println("🆔 CPF: " + proximo.getCpf());
+        System.out.println("🚨 Fila: " + filaNome);
+        System.out.println("🕒 Chegada: " + proximo.getChegadaFilaTimestamp());
+        System.out.println("==============================================");
+
+        return proximo;
+        /*
+        Paciente proximo = null;
+        String filaNome = "";
+
         // Prioridade máxima primeiro
         if (!filaVermelha.isEmpty()) {
             proximo = filaVermelha.get(0);
@@ -137,12 +194,14 @@ public class UPA {
         if (filaNome.contains("VERDE")) filaVerde.remove(0);
 
         return proximo;
+        */
     }
 
-
+    /*
     public double getTempoMedioEspera() {
         return 0.0; // SEM LOGICA
     }
+     */
 
     public boolean removerPaciente(Paciente paciente) {
         if (paciente == null) {
@@ -203,7 +262,14 @@ public class UPA {
         return removido;
     }
 
+    public void registrarAtendimento(Prioridade prioridade) {
+        if (prioridade == Prioridade.VERDE) atendidosVerde++;
+        else if (prioridade == Prioridade.AMARELA) atendidosAmarela++;
+        else if (prioridade == Prioridade.VERMELHA) atendidosVermelha++;
+    }
+    /*
     public int posicaoNaFila(Paciente paciente) {
         return 0; // SEM LOGICA
     }
+     */
 }

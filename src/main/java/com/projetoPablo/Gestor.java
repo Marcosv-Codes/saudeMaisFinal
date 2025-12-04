@@ -12,19 +12,27 @@ public class Gestor extends Funcionario{
     }
 
     public void monitorarFilas() {
+        System.out.println("\n======= 📊 MONITORANDO FILAS DE ESPERA =======");
         UPA upa = getUpaAlocado();
         System.out.println("Filas da UPA " + upa.getNome());
         System.out.println("Verde: " + upa.getFilaVerde().size());
         System.out.println("Amarela: " + upa.getFilaAmarela().size());
         System.out.println("Vermelha: " + upa.getFilaVermelha().size());
+        System.out.println("=====================================");
     }
 
     public void cadastrarFuncionario(Funcionario funcionario) {
         // SEM LOGICA
     }
 
-    public String gerarRelatorioSimples() {
+    public void gerarRelatorioSimples() {
+        UPA upa = getUpaAlocado();
 
-        return null; // SEM LOGICA
+        System.out.println("\n======= 📊 RELATÓRIO SIMPLES =======");
+        System.out.println("🟢 Pacientes atendidos VERDE: " + upa.getAtendidosVerde());
+        System.out.println("🟡 Pacientes atendidos AMARELA: " + upa.getAtendidosAmarela());
+        System.out.println("🔴 Pacientes atendidos VERMELHA: " + upa.getAtendidosVermelha());
+        System.out.println("=====================================");
+
     }
 }
