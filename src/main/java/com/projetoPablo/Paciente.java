@@ -81,4 +81,4 @@ public class Paciente extends Pessoa{
         return tempoEspera; // FALTA A LOGICA
     }
      */
-} //
+}
