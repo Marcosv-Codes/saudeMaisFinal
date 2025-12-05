@@ -27,6 +27,7 @@ public class Main {
   Paciente p1 = new Paciente("Paciente 1", "11111111111", "01/01/2001", "saude1+@gmail.com", "saude+1", "20:34");
   Paciente p2 = new Paciente("Paciente 2", "22222222222", "01/01/2002", "saude2+@gmail.com", "saude+2", "20:35");
   Paciente p3 = new Paciente("Paciente 3", "3333333333", "01/01/2003", "saude3+@gmail.com", "saude+3", "20:36");
+  Paciente p4 = new Paciente("Paciente 4", "44444444444", "01/01/2004", "saude4+@gmail.com", "saude+4", "20:33");
 
   // AUTENTICANDO FUNCIONARIOS
   gestor.autenticar("321", "321");
@@ -44,21 +45,27 @@ public class Main {
   p1.login("saude1+@gmail.com", "saude+1");
   p2.login("saude2+@gmail.com", "saude+2");
   p3.login("saude3+@gmail.com", "saude+3");
+  //p4.login("saude4+@gmail.com", "saude+4");
 
   // TRIAGEM DE PACIENTES PELO ENFERMEIRO
   enfermeiro.triarPaciente(p1, Prioridade.VERDE);
   enfermeiro.triarPaciente(p2, Prioridade.AMARELA);
   enfermeiro.triarPaciente(p3, Prioridade.VERMELHA);
+  enfermeiro.triarPaciente(p4, Prioridade.AMARELA);
 
   // CADASTRO DE PACIENTES PELO ATENDENTE
   atendente.cadastrarPaciente(p1);
   atendente.cadastrarPaciente(p2);
   atendente.cadastrarPaciente(p3);
+  atendente.cadastrarPaciente(p4);
 
   // PACIENTES ADICIONADOS NA FILA PELO ATENDENTE
   atendente.adicionarFila(p1, upa1);
   atendente.adicionarFila(p2, upa1);
   atendente.adicionarFila(p3, upa1);
+  atendente.adicionarFila(p4, upa1);
+
+  ArquivoPacientes.salvarFila(upa1);
 
   // GESTOR MONITORA A FILA NESTE MOMENTO
   gestor.monitorarFilas();
@@ -67,6 +74,8 @@ public class Main {
   upa1.chamarProximo();
   upa1.chamarProximo();
   upa1.chamarProximo();
+
+  ArquivoPacientes.mostrarFila();
 
   // GESTOR MONITORA NOVAMENTE A FILA APOS OS PACIENTES SEREM CHAMADOS
   gestor.monitorarFilas();
@@ -83,11 +92,14 @@ public class Main {
 
 
   // MEDICO ATENDE -> FINALIZA O ATENDIMENTO
-  medico1.atenderPaciente(p1);
-  medico1.finalizarAtendimento(p1);
+  medico1.atenderPaciente(p4);
+  medico1.finalizarAtendimento(p4);
 
   // GESTOR GERA O RELATORIO
   gestor.gerarRelatorioSimples();
+
+  ArquivoPacientes.salvarFila(upa1);
+  ArquivoPacientes.mostrarFila();
 
  }
 }
