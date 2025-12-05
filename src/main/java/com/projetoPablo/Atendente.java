@@ -34,24 +34,17 @@ public class Atendente extends Funcionario {
             System.out.println("⚠️ Paciente inválido.");
             return;
         }
+        try {
+            // chama a lógica da UPA para inserir na fila correta
+            upa.adicionarPacienteFila(paciente);
 
-        if (upa == null) {
-            System.out.println("⚠️ UPA inválida.");
-            return;
+            // print simples do atendente confirmando
+            System.out.println("📞 O Atendente " + getNome() + " adicionou o(a) paciente "
+                    + paciente.getNome() + " na fila " + paciente.getPrioridade()
+                    + " da UPA " + upa.getNome());
+        } catch (PacienteInvalidoException erro) {
+            System.out.println(erro.getMessage());
         }
-
-        if (paciente.getPrioridade() == null) {
-            System.out.println("⚠️ O paciente " + paciente.getNome() + " ainda não passou pela triagem.");
-            return;
-        }
-
-        // ✅ agora chama o método correto da UPA
-        upa.adicionarPacienteFila(paciente);
-
-        System.out.println("📞 O Atendente " + getNome() +
-                " adicionou o(a) paciente " + paciente.getNome() +
-                " na fila " + paciente.getPrioridade() +
-                " da UPA " + upa.getNome());
     }
 
 }

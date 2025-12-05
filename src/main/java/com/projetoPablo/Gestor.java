@@ -35,4 +35,4 @@ public class Gestor extends Funcionario{
         System.out.println("=====================================");
 
     }
-}
+} //

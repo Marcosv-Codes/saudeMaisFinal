@@ -91,15 +91,13 @@ public class UPA {
     }
 
     // MÉTODOS
-    public void adicionarPacienteFila(Paciente paciente) {
+    public void adicionarPacienteFila(Paciente paciente) throws PacienteInvalidoException {
         if (paciente == null) {
-            System.out.println("⚠️ Paciente inválido.");
-            return;
+            throw new PacienteInvalidoException("Usuário Inválido");
         }
 
         if (paciente.getPrioridade() == null) {
-            System.out.println("⚠️ O paciente " + paciente.getNome() + " ainda não passou pela triagem!");
-            return;
+            throw new PacienteInvalidoException("⚠️ O paciente " + paciente.getNome() + " ainda não passou pela triagem!");
         }
 
         switch (paciente.getPrioridade()) {

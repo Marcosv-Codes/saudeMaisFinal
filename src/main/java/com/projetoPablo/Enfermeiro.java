@@ -88,4 +88,4 @@ public class Enfermeiro extends Funcionario{
         System.out.println("📌 Status: Sem melhora após medicação → Aguarda atendimento médico!");
         System.out.println("======================================================================");
     }
-}
+} //
